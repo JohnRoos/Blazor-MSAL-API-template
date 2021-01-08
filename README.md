@@ -5,6 +5,7 @@ A template which can be used when building Blazor WebAssembly apps using authent
 ## Configuration
 
 ### Settings
+
 Change the settings in wwwroot\appsettings.json. Here you can set your tenant id, client id and paths to your backend API.
 
 ### Register app in Azure Active Directory
@@ -24,5 +25,5 @@ When I have time I might add more details on how to set this up.
 When creating this template I have used several good sources. Here are a few:
 
 * Attach token for outgoing requests: https://docs.microsoft.com/en-us/aspnet/core/blazor/security/webassembly/additional-scenarios?view=aspnetcore-5.0#attach-tokens-to-outgoing-requests
-* Roles claim comes as a json string. A list of roles is needed: https://docs.microsoft.com/en-us/aspnet/core/blazor/security/webassembly/azure-active-directory-groups-and-roles?view=aspnetcore-3.1#user-defined-groups-and-administrator-roles
-* Bug causes the redirect mode to not work: https://github.com/dotnet/aspnetcore/pull/28498
+* Roles claim comes as a json string from AAD. A list of roles is needed: https://docs.microsoft.com/en-us/aspnet/core/blazor/security/webassembly/azure-active-directory-groups-and-roles?view=aspnetcore-3.1#user-defined-groups-and-administrator-roles
+* Bug in .Net Core causes the redirect mode to not work: https://github.com/dotnet/aspnetcore/pull/28498
