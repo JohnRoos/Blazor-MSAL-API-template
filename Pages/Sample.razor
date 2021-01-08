@@ -1,0 +1,60 @@
+﻿@page "/sample"
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Http
+@attribute [Authorize(Roles = "Admin")]
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h1>Fruits sample</h1>
+
+This page is an example on how to fetch data from a protected API.
+
+@if (fruits == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var fruit in fruits)
+            {
+                <tr>
+                    <td>@fruit.Type</td>
+                    <td>@fruit.Color</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+
+@code {
+
+    private Fruit[] fruits;
+
+    // runs when the page is loaded
+    protected override async Task OnInitializedAsync()
+    {
+        fruits = await Http.GetFromJsonAsync<Fruit[]>("Fruit");
+    }
+
+    // runs when parameters change. Without this the page would not refresh when the parameters change
+    protected override async Task OnParametersSetAsync()
+    {
+        await OnInitializedAsync();
+    }
+
+    public class Fruit
+    {
+        public string Type { get; set; }
+        public string Color { get; set; }
+    }
+}

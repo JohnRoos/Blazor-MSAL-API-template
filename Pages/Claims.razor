@@ -1,0 +1,19 @@
+@page "/claims"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin")]
+
+<AuthorizeView>
+    <Authorized>
+        <h2>Your identity name: @context.User.Identity.Name</h2>
+        <h4>Claims:</h4>
+        <ul>
+            @foreach (var claim in context.User.Claims)
+            {
+                <li><b>@claim.Type</b>: @claim.Value</li>
+            }
+        </ul>
+    </Authorized>
+    <NotAuthorized>
+        <p>I'm sorry, I can't display anything until you log in</p>
+    </NotAuthorized>
+</AuthorizeView>
