@@ -5,3 +5,4 @@ obj/
 .vs/BlazorMSAL/v16/.suo
 .vs/BlazorMSAL/config/applicationhost.config
 .vs/BlazorMSAL/config/debuggerConfiguration-5827b10c-6eae-4269-97e9-f8b7890a3e2c.json
+wwwroot/appsettings.json
